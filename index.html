@@ -1,0 +1,560 @@
+Sevara, [08.09.2025 19:38]
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>20 Unique Buttons — Saran</title>
+<style>
+/* Minimal page layout (allowed). Har bir button alohida stylega ega (.btn1 ... .btn20) */
+/* Container */
+:root{--bg:#0b0b0d;--gap:18px}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);font-family:Inter,ui-sans-serif,system-ui,"Segoe UI",Roboto,Arial;color:#eef;line-height:1}
+.wrapper{max-width:1200px;margin:24px auto;padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--gap)}
+
+/* label above each button for clarity */
+.card{background:transparent;padding:8px;border-radius:12px;}
+
+/* ===========================================
+   BUTTON 1: Neon pill (glow on hover)
+   =========================================== */
+.btn1 {
+  display:inline-block;padding:12px 22px;border-radius:999px;cursor:pointer;
+  background:linear-gradient(90deg,#00fff0,#a100ff);color:#021; font-weight:700;
+  box-shadow:0 6px 30px rgba(161,0,255,0.08);
+  border:0;
+  transition: transform .16s, box-shadow .2s;
+  user-select:none;
+}
+.btn1:hover{ transform:translateY(-4px); box-shadow:0 18px 40px rgba(0,255,240,0.18) }
+
+/* ===========================================
+   BUTTON 2: Glass button with inner shine (glassmorphism)
+   =========================================== */
+.btn2{
+  display:inline-block;padding:11px 18px;border-radius:14px;cursor:pointer;border:1px solid rgba(255,255,255,0.08);
+  background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  color:#fff;font-weight:600;
+  backdrop-filter:blur(6px);
+  position:relative; overflow:hidden;
+}
+.btn2::after{
+  content:""; position:absolute; left:-60%; top:-40%; width:40%; height:180%; background:rgba(255,255,255,0.08);
+  transform:skewX(-25deg); transition:left .9s cubic-bezier(.2,.9,.2,1);
+}
+.btn2:hover::after{ left:120% }
+
+/* ===========================================
+   BUTTON 3: Bounce button (springy)
+   =========================================== */
+.btn3{
+  display:inline-block;padding:12px 20px;border-radius:12px;background:#ff9f1c;color:#071827;border:0;font-weight:700;cursor:pointer;
+  transition: transform .14s cubic-bezier(.2,.7,.2,1);
+}
+.btn3:active{ transform:translateY(6px) scale(.98) }
+.btn3:hover{ animation:bounceHover .8s }
+@keyframes bounceHover{ 0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+
+/* ===========================================
+   BUTTON 4: Ripple effect (uses JS to create ripple)
+   =========================================== */
+.btn4{
+  display:inline-block;padding:12px 20px;border-radius:10px;background:#001f3f;color:#fff;border:0;cursor:pointer;position:relative;overflow:hidden;font-weight:700;
+}
+
+/* ripple span will be injected by JS */
+
+/* ===========================================
+   BUTTON 5: Gradient-sweep outline (animated border)
+   =========================================== */
+.btn5{
+  display:inline-block;padding:10px 18px;border-radius:18px;background:transparent;color:#fff;border:3px solid transparent;
+  background-image: linear-gradient(#0b0b0d, #0b0b0d), linear-gradient(90deg,#ff3cac,#7bffb2,#00fff0);
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+  font-weight:700; cursor:pointer;
+  transition: transform .16s;
+}
+.btn5:hover{ transform:scale(1.03) }
+
+/* ===========================================
+   BUTTON 6: Rotate on click (spin)
+   =========================================== */
+.btn6{
+  padding:12px 22px;border-radius:8px;background:#6a5acd;color:#fff;border:0;cursor:pointer;font-weight:700;
+  transition: transform .5s ease;
+}
+
+/* ===========================================
+   BUTTON 7: Flip card style (3D flip on hover)
+   =========================================== */
+.btn7{
+  width:160px;height:44px;display:inline-block; perspective:800px; border-radius:10px;
+}
+.btn7 .inner{
+  width:100%;height:100%;display:grid;place-items:center;border-radius:10px;
+background:linear-gradient(90deg,#ffd166,#ff6b6b); color:#111; font-weight:800; cursor:pointer;
+  transform-style:preserve-3d; transition:transform .5s;
+}
+.btn7:hover .inner{ transform:rotateY(180deg) }
+.btn7 .inner::after{ content:"Back"; position:absolute; transform:rotateY(180deg); opacity:0.95 }
+
+/* ===========================================
+   BUTTON 8: Dotted-outline animated dash
+   =========================================== */
+.btn8{
+  padding:10px 20px;border-radius:12px;background:transparent;color:#fff;border:2px dashed rgba(255,255,255,0.14);cursor:pointer;font-weight:700;
+  transition:border-color .2s;
+}
+.btn8:hover{ border-color:#7bffb2 }
+
+/* ===========================================
+   BUTTON 9: Icon-pop — small icon pops in on hover (pure CSS)
+   =========================================== */
+.btn9{
+  padding:12px 18px;border-radius:12px;background:#111;color:#fff;border:0;cursor:pointer;position:relative;overflow:visible;font-weight:700;
+}
+.btn9::after{
+  content:"✨"; position:absolute; right:10px; top:50%; transform:translateY(-50%) scale(0); transition:transform .23s;
+}
+.btn9:hover::after{ transform:translateY(-50%) scale(1.2) }
+
+/* ===========================================
+   BUTTON 10: Loading spinner button (shows spinner while "loading")
+   =========================================== */
+.btn10{
+  padding:12px 20px;border-radius:12px;background:#00c2ff;color:#001;border:0;cursor:pointer;font-weight:700;position:relative;overflow:hidden;
+}
+.btn10 .spinner{
+  position:absolute; right:12px; top:50%; transform:translateY(-50%); width:18px;height:18px;border-radius:50%; border:2px solid rgba(255,255,255,0.2); border-top-color:#fff; display:none;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===========================================
+   BUTTON 11: Progress fill (fills from left when clicked)
+   =========================================== */
+.btn11{
+  padding:10px 18px;border-radius:10px;background:rgba(255,255,255,0.06);color:#fff;border:0;cursor:pointer;position:relative;overflow:hidden;font-weight:700;
+}
+.btn11 .fill{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,#7bffb2,#00fff0);z-index:0;transition:width .9s}
+.btn11 span{ position:relative; z-index:1 }
+
+/* ===========================================
+   BUTTON 12: Badge + counter (increments on click)
+   =========================================== */
+.btn12{
+  padding:10px 16px;border-radius:12px;background:#ff6b6b;color:#fff;border:0;cursor:pointer;font-weight:800;position:relative;
+}
+.btn12 .badge{ position:absolute; top:-8px; right:-8px; background:#fff;color:#ff2b2b;font-weight:800; border-radius:999px; padding:4px 8px; font-size:12px; transform:scale(.95) }
+
+/* ===========================================
+   BUTTON 13: Morphing shape (from pill to square)
+   =========================================== */
+.btn13{
+  padding:12px 20px;border-radius:999px;background:#9b59b6;color:#fff;border:0;cursor:pointer;font-weight:700; transition:border-radius .35s, transform .18s;
+}
+.btn13:active{ border-radius:12px; transform:scale(.98) }
+
+/* ===========================================
+   BUTTON 14: Skew & slide underline
+   =========================================== */
+.btn14{ position:relative; padding:12px 20px;background:transparent;border:0;color:#fff;cursor:pointer;font-weight:700; overflow:visible }
+.btn14::after{ content:""; position:absolute; left:10%; bottom:6px; height:3px; width:80%; background:linear-gradient(90deg,#ffd166,#ff6b6b); transform:scaleX(0); transform-origin:left; transition:transform .28s; border-radius:3px }
+.btn14:hover::after{ transform:scaleX(1) }
+.btn14:hover{ transform:skewX(-6deg) }
+
+/* ===========================================
+   BUTTON 15: Pixel / 8-bit look
+   =========================================== */
+.btn15{
+  padding:10px 16px;border-radius:4px;background:#111;color:#0f0;border:4px solid #0f0;font-family:monospace;font-weight:800;cursor:pointer;
+}
+.btn15:active{ transform:translateY(3px) }
+
+
+/* ===========================================
+   BUTTON 16: Emboss (inset) press look
+   =========================================== */
+.btn16{
+  padding:12px 18px;border-radius:10px;background:#e6e6e6;color:#111;border:0;cursor:pointer;font-weight:700; box-shadow: inset 6px 6px 12px rgba(0,0,0,0.08), inset -6px -6px 12px rgba(255,255,255,0.6);
+}
+.btn16:active{ box-shadow: inset 2px 2px 6px rgba(0,0,0,0.12), inset -2px -2px 6px rgba(255,255,255,0.4) }
+
+/* ===========================================
+   BUTTON 17: Underline sweep with gradient
+   =========================================== */
+.btn17{ padding:12px 20px;border-radius:8px;background:transparent;border:0;color:#fff;cursor:pointer;font-weight:700; position:relative; overflow:visible }
+.btn17::before{ content:""; position:absolute; left:0; right:0; bottom:0; height:4px; background:linear-gradient(90deg,#00fff0,#ff3cac); transform:translateX(-100%); transition:transform .4s; border-radius:4px }
+.btn17:hover::before{ transform:translateX(0) }
+
+/* ===========================================
+   BUTTON 18: Confetti burst (small dot effects via JS)
+   =========================================== */
+.btn18{ padding:12px 22px;border-radius:20px;background:linear-gradient(90deg,#7bffb2,#00fff0);color:#011;border:0;cursor:pointer;font-weight:800;position:relative;overflow:visible }
+
+/* ===========================================
+   BUTTON 19: Floating (slow float animation)
+   =========================================== */
+.btn19{ padding:12px 20px;border-radius:12px;background:#ffd166;color:#081827;border:0;cursor:pointer;font-weight:800; animation:floatBtn 3.6s ease-in-out infinite }
+@keyframes floatBtn{ 0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+
+/* ===========================================
+   BUTTON 20: Checkmark success (shows tick on click)
+   =========================================== */
+.btn20{ padding:12px 18px;border-radius:10px;background:#00a86b;color:#fff;border:0;cursor:pointer;font-weight:800; position:relative; overflow:visible }
+.btn20 .tick{ display:inline-block; margin-left:8px; opacity:0; transform:translateX(-6px) scale(.8); transition:all .28s }
+
+/* small util for demo labels */
+.hlabel{ display:block;color:#cfd8dc;margin-bottom:8px;font-size:13px }
+.card p{margin:6px 0 12px;color:#9aa;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- 1 -->
+  <div class="card">
+    <label class="hlabel">1 — Neon pill</label>
+    <button id="btn1" class="btn1" aria-label="Neon">Neon</button>
+  </div>
+
+  <!-- 2 -->
+  <div class="card">
+    <label class="hlabel">2 — Glass shine</label>
+    <button id="btn2" class="btn2" aria-label="Glass">Glass</button>
+  </div>
+
+  <!-- 3 -->
+  <div class="card">
+    <label class="hlabel">3 — Bounce</label>
+    <button id="btn3" class="btn3" aria-label="Bounce">Bounce</button>
+  </div>
+
+  <!-- 4 -->
+  <div class="card">
+    <label class="hlabel">4 — Ripple</label>
+    <button id="btn4" class="btn4" aria-label="Ripple">Ripple</button>
+  </div>
+
+  <!-- 5 -->
+  <div class="card">
+    <label class="hlabel">5 — Gradient outline</label>
+    <button id="btn5" class="btn5" aria-label="Gradient">Gradient</button>
+  </div>
+
+  <!-- 6 -->
+  <div class="card">
+    <label class="hlabel">6 — Spin on click</label>
+    <button id="btn6" class="btn6" aria-label="Spin">Spin me</button>
+  </div>
+
+  <!-- 7 -->
+  <div class="card">
+    <label class="hlabel">7 — 3D Flip</label>
+    <div id="btn7" class="btn7" role="button" tabindex="0"><div class="inner">Flip</div></div>
+  </div>
+
+  <!-- 8 -->
+  <div class="card">
+    <label class="hlabel">8 — Dashed outline</label>
+    <button id="btn8" class="btn8" aria-label="Dashed">Dashed</button>
+  </div>
+
+  <!-- 9 -->
+  <div class="card">
+    <label class="hlabel">9 — Icon pop</label>
+    <button id="btn9" class="btn9" aria-label="IconPop">Icon ✨</button>
+  </div>
+
+  <!-- 10 -->
+  <div class="card">
+    <label class="hlabel">10 — Loading spinner</label>
+
+
+<button id="btn10" class="btn10" aria-label="Loader">Load<span class="spinner"></span></button>
+  </div>
+
+  <!-- 11 -->
+  <div class="card">
+    <label class="hlabel">11 — Progress fill</label>
+    <button id="btn11" class="btn11" aria-label="Progress"><span>Upload</span><div class="fill"></div></button>
+  </div>
+
+  <!-- 12 -->
+  <div class="card">
+    <label class="hlabel">12 — Badge counter</label>
+    <button id="btn12" class="btn12" aria-label="Counter">Likes <span class="badge">0</span></button>
+  </div>
+
+  <!-- 13 -->
+  <div class="card">
+    <label class="hlabel">13 — Morph pill → square</label>
+    <button id="btn13" class="btn13" aria-label="Morph">Morph</button>
+  </div>
+
+  <!-- 14 -->
+  <div class="card">
+    <label class="hlabel">14 — Skew & underline</label>
+    <button id="btn14" class="btn14" aria-label="Skew">Skew</button>
+  </div>
+
+  <!-- 15 -->
+  <div class="card">
+    <label class="hlabel">15 — Pixel / Retro</label>
+    <button id="btn15" class="btn15" aria-label="Pixel">PIXEL</button>
+  </div>
+
+  <!-- 16 -->
+  <div class="card">
+    <label class="hlabel">16 — Emboss press</label>
+    <button id="btn16" class="btn16" aria-label="Emboss">Press</button>
+  </div>
+
+  <!-- 17 -->
+  <div class="card">
+    <label class="hlabel">17 — Underline sweep</label>
+    <button id="btn17" class="btn17" aria-label="Sweep">Sweep</button>
+  </div>
+
+  <!-- 18 -->
+  <div class="card">
+    <label class="hlabel">18 — Confetti burst</label>
+    <button id="btn18" class="btn18" aria-label="Confetti">Celebrate</button>
+  </div>
+
+  <!-- 19 -->
+  <div class="card">
+    <label class="hlabel">19 — Floating</label>
+    <button id="btn19" class="btn19" aria-label="Float">Float</button>
+  </div>
+
+  <!-- 20 -->
+  <div class="card">
+    <label class="hlabel">20 — Checkmark success</label>
+    <button id="btn20" class="btn20" aria-label="Check">Submit <span class="tick">✓</span></button>
+  </div>
+
+</div>
+
+<!-- Confetti root for button18 -->
+<div id="particle-root" style="position:fixed;left:0;top:0;right:0;bottom:0;pointer-events:none;z-index:9999"></div>
+
+<script>
+/* =========================
+   JS handlers for 20 buttons
+   ========================= */
+
+/* Utility: get element by id safely */
+const $ = id => document.getElementById(id);
+
+/* ---- BTN 1: simple click feedback ---- */
+$('btn1').addEventListener('click', ()=> {
+  const el = $('btn1');
+  el.animate([{ transform: 'translateY(0)'},{ transform: 'translateY(-6px)'},{ transform: 'translateY(0)'}],{ duration:300, easing:'cubic-bezier(.2,.8,.2,1)'});
+  // small text flash
+  const prev = el.textContent;
+  el.textContent = 'Clicked!';
+  setTimeout(()=> el.textContent = prev, 700);
+});
+
+/* ---- BTN 2: glass shine handled by CSS; add click pulse ---- */
+$('btn2').addEventListener('click', e=>{
+  const el = $('btn2');
+  el.animate([{ transform:'scale(1)', boxShadow:'0 0 0 rgba(255,255,255,0)' },{ transform:'scale(1.03)', boxShadow:'0 0 30px rgba(255,255,255,0.08)' },{transform:'scale(1)', boxShadow:'0 0 0 rgba(255,255,255,0)'}],{ duration:450 });
+});
+
+/* ---- BTN 3: bounce actives handled by CSS; show counter of clicks in label ---- */
+let btn3count = 0;
+$('btn3').addEventListener('click', ()=> {
+  btn3count++;
+  $('btn3').textContent = Bounce ({btn3count});
+});
+
+/* ---- BTN 4: ripple effect (create span) ---- */
+$('btn4').addEventListener('click', function(e){
+  const btn = this;
+  const rect = btn.getBoundingClientRect();
+  const r = document.createElement('span');
+  r.style.position = 'absolute';
+  r.style.width = r.style.height = '16px';
+  r.style.left = (e.clientX - rect.left - 8) + 'px';
+  r.style.top = (e.clientY - rect.top - 8) + 'px';
+  r.style.background = 'rgba(255,255,255,0.5)';
+  r.style.borderRadius = '50%';
+  r.style.pointerEvents = 'none';
+  btn.appendChild(r);
+  r.animate([{ transform:'scale(0)', opacity:0.7 },{ transform:'scale(8)', opacity:0 }],{ duration:700, easing:'cubic-bezier(.2,.9,.2,1)'});
+  setTimeout(()=> r.remove(), 800);
+  // small action
+  btn.style.transform = 'translateY(-4px)';
+  setTimeout(()=> btn.style.transform = '', 120);
+});
+
+
+/* ---- BTN 5: gradient outline; animate text on click ---- */
+$('btn5').addEventListener('click', function(){
+  const b = this;
+  b.animate([{ transform:'scale(1)' },{ transform:'scale(0.98)' },{ transform:'scale(1)'}],{ duration:260 });
+  const prev = b.textContent;
+  b.textContent = 'Applied';
+  setTimeout(()=> b.textContent = prev, 900);
+});
+
+/* ---- BTN 6: spin on click ---- */
+$('btn6').addEventListener('click', function(){
+  const b = this;
+  b.style.transition = 'transform .8s';
+  b.style.transform = 'rotate(360deg)';
+  setTimeout(()=> { b.style.transform=''; b.style.transition=''; }, 850);
+});
+
+/* ---- BTN 7: flip is CSS hover; add keyboard accessibility toggle ---- */
+$('btn7').addEventListener('click', function(){
+  // toggle by pressing click: rotate 180deg quickly then back
+  const inner = this.querySelector('.inner');
+  inner.style.transition = 'transform .45s';
+  inner.style.transform = 'rotateY(180deg)';
+  setTimeout(()=> { inner.style.transform=''; inner.style.transition=''; }, 600);
+});
+$('btn7').addEventListener('keydown', function(e){
+  if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+});
+
+/* ---- BTN 8: dashed border; just small hover animation already in CSS; add click blink ---- */
+$('btn8').addEventListener('click', function(){
+  this.style.transition = 'transform .12s';
+  this.style.transform = 'scale(.98)';
+  setTimeout(()=> this.style.transform='', 140);
+});
+
+/* ---- BTN 9: icon pop; add a small confetti star near it ---- */
+$('btn9').addEventListener('click', function(e){
+  const btn = this;
+  const star = document.createElement('div');
+  star.textContent = '★';
+  star.style.position='absolute'; star.style.left='8px'; star.style.top='-6px'; star.style.fontSize='18px';
+  star.style.opacity='0';
+  btn.appendChild(star);
+  star.animate([{opacity:0, transform:'translateY(6px) scale(.6)'},{opacity:1, transform:'translateY(-6px) scale(1.2)'},{opacity:0, transform:'translateY(-18px) scale(.4)'}],{ duration:700, easing:'cubic-bezier(.2,.8,.2,1)'});
+  setTimeout(()=> star.remove(), 750);
+});
+
+/* ---- BTN 10: loading spinner toggles for 1.2s ---- */
+$('btn10').addEventListener('click', function(){
+  const spinner = this.querySelector('.spinner');
+  spinner.style.display = 'inline-block';
+  const prev = this.textContent;
+  this.disabled = true;
+  setTimeout(()=> {
+    spinner.style.display = 'none';
+    this.disabled = false;
+    this.textContent = 'Done';
+    setTimeout(()=> this.textContent = 'Load', 900);
+  }, 1200);
+});
+
+/* ---- BTN 11: fill progress bar to 100% when clicked (simulated) ---- */
+$('btn11').addEventListener('click', function(){
+  const fill = this.querySelector('.fill');
+  fill.style.width = '0%';
+  // simulate progressive fill
+  setTimeout(()=> fill.style.width = '100%', 40);
+  setTimeout(()=> { this.querySelector('span').textContent = 'Uploaded'; setTimeout(()=> this.querySelector('span').textContent='Upload',900); fill.style.width='0%'; }, 1200);
+});
+
+/* ---- BTN 12: badge counter increments ---- */
+$('btn12').addEventListener('click', function(){
+  const badge = this.querySelector('.badge');
+  let n = parseInt(badge.textContent||'0',10);
+  n++;
+  badge.textContent = n;
+  // small pop
+  badge.animate([{ transform:'scale(1)' },{ transform:'scale(1.3)' },{ transform:'scale(1)'}],{ duration:300 });
+});
+
+/* ---- BTN 13: morph already CSS; add little color flash on click ---- */
+$('btn13').addEventListener('click', function(){
+  const b = this;
+  b.animate([{ filter:'hue-rotate(0deg)' },{ filter:'hue-rotate(60deg)' },{ filter:'hue-rotate(0deg)'}],{ duration:600 });
+});
+
+/* ---- BTN 14: skew underline; toggle brief tilt on click ---- */
+$('btn14').addEventListener('click', function(){
+  const b=this;
+  b.animate([{ transform:'skewX(0deg)' },{ transform:'skewX(-8deg)' },{ transform:'skewX(0deg)'}],{ duration:420 });
+});
+
+/* ---- BTN 15: pixel sound (visual) ---- */
+$('btn15').addEventListener('click', function(){
+  this.animate([{ transform:'translateY(0)' },{ transform:'translateY(4px)' },{ transform:'translateY(0)'}],{ duration:180 });
+});
+
+
+/* ---- BTN 16: emboss effect (no extra JS needed) ---- */
+$('btn16').addEventListener('click', function(){
+  this.animate([{ boxShadow:'inset 6px 6px 12px rgba(0,0,0,0.08)' },{ boxShadow:'inset 2px 2px 4px rgba(0,0,0,0.18)' },{ boxShadow:'inset 6px 6px 12px rgba(0,0,0,0.08)'}],{ duration:240 });
+});
+
+/* ---- BTN 17: underline sweep handled by CSS; add click shine ---- */
+$('btn17').addEventListener('click', function(){
+  const el=this;
+  el.animate([{ filter:'brightness(1)' },{ filter:'brightness(1.6)' },{ filter:'brightness(1)'}],{ duration:420 });
+});
+
+/* ---- BTN 18: confetti burst - generate many colored squares/dots ----- */
+$('btn18').addEventListener('click', function(e){
+  const root = document.getElementById('particle-root');
+  const rect = this.getBoundingClientRect();
+  const spawnX = rect.left + rect.width/2;
+  const spawnY = rect.top + rect.height/2;
+  const colors = ['#FF3CAC','#7BFFB2','#00FFF0','#FFD166','#7A0CFF','#FF6B6B'];
+  for(let i=0;i<28;i++){
+    const p = document.createElement('div');
+    const size = 6 + Math.floor(Math.random()*8);
+    p.style.position='absolute'; p.style.left = spawnX + (Math.random()*160 - 80) + 'px'; p.style.top = spawnY + (Math.random()*60 - 30) + 'px';
+    p.style.width = size+'px'; p.style.height = size+'px'; p.style.background = colors[Math.floor(Math.random()*colors.length)];
+    p.style.borderRadius = (Math.random()>0.5? '50%':'2px');
+    p.style.pointerEvents = 'none'; p.style.opacity = 1;
+    root.appendChild(p);
+    const dx = (Math.random()*400 - 200), dy = -200 - Math.random()*200, rot = Math.random()*720;
+    p.animate([{ transform:`translate(0px,0px) rotate(0deg)`, opacity:1 }, { transform:`translate(${dx}px,${dy}px) rotate(${rot}deg)`, opacity:1 }, { transform:`translate(${dx*1.2}px,${dy+350}px) rotate(${rot*2}deg)`, opacity:0 }], { duration:1200 + Math.random()*800, easing:'cubic-bezier(.2,.7,.3,1)'});
+    setTimeout(()=> p.remove(), 2200);
+  }
+  // small label change
+  const old = this.textContent;
+  this.textContent = 'Yuborildi!';
+  setTimeout(()=> this.textContent = old, 900);
+});
+
+/* ---- BTN 19: floating; on click do small jump ---- */
+$('btn19').addEventListener('click', function(){
+  this.animate([{ transform:'translateY(0)' },{ transform:'translateY(-14px)' },{ transform:'translateY(0)'}],{ duration:450, easing:'cubic-bezier(.2,.8,.2,1)' });
+});
+
+/* ---- BTN 20: show check tick on click ---- */
+$('btn20').addEventListener('click', function(){
+  const tick = this.querySelector('.tick');
+  tick.style.opacity = 0; tick.style.transform = 'translateX(-6px) scale(.6)';
+  requestAnimationFrame(()=> {
+    tick.style.transition = 'all .32s';
+    tick.style.opacity = 1; tick.style.transform = 'translateX(0) scale(1)';
+  });
+  // change text briefly
+  const old = this.textContent;
+  this.textContent = '✓ Sent';
+  setTimeout(()=> this.textContent = 'Submit ', 900);
+  // re-attach tick
+  this.appendChild(tick);
+});
+
+/* Accessibility: allow Enter/Space to activate buttons that are divs (btn7) */
+document.querySelectorAll('.btn7[role="button"]').forEach(el=>{
+  el.addEventListener('keydown', e=> { if(e.key==='Enter' || e.key===' ') { e.preventDefault(); el.click(); }});
+});
+
+/* End of JS */
+</script>
+</body>
+</html>
